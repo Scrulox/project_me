@@ -1,0 +1,46 @@
+<div class="container">
+
+  <h2>
+    <%= @post.title %>
+  </h2>
+
+  <p>
+    <strong>Content:</strong>
+    <%= @post.body %>
+  </p>
+
+  <p>
+    <strong>Category:</strong>
+    <%= @post.category %>
+  </p>
+
+  <p>
+    <strong>Angry?</strong>
+    <%= yesno(@post.anger) %>
+  <p>
+
+  <p><%= @post.kudos_count %> <strong>Kudos</strong> </p>
+
+  <%= link_to "Kudos", kudos_post_path(@post), method: :patch, class: "btn btn-success" %>
+
+  
+
+  <h4>Comments:</h4>
+
+  <ol>
+    <% @post.comments.each do |comment| %> 
+      <li class="list-group-item"><%= comment.body %></li>
+      <p>
+      <%= link_to "Edit", edit_post_comment_path(@post, comment) %> &nbsp;
+      <%= link_to "Delete", [@post, comment], method: :delete, data: {confirm: "Are you sure?"}  %>
+      </p>
+    <%end%>
+  </ol>
+    
+
+  <%= link_to "Add Comment", new_post_comment_path(@post) %>
+
+  <br>
+  <%= link_to 'Back', posts_path %>
+
+</div>

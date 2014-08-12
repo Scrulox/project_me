@@ -1,0 +1,12 @@
+<%= form_for([@post, @comment]) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :body, "Content" %>
+    <%= f.text_area :body, class: "form-control" %>
+    </p>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: "btn btn-default" %>
+  </div>
+<% end %>
